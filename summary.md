@@ -1,4 +1,4 @@
-# Insurance Query Bot — Complete Notes (written so future-me with zero memory of this can still understand it)
+# Insurance Query Bot 
 
 ## 1. What this project even is, in plain words
 
