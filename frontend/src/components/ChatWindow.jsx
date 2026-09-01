@@ -7,7 +7,7 @@ const ChatWindow = ({ currentChat, setCurrentChat, startNewChat }) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const API_URL_ENDPOINT = import.meta.env.VITE_REACT_APP_API_URL_ENDPOINT;
-    const API_KEY = import.meta.env.VITE_REACT_APP_HACKATHON_API_KEY;
+    const API_KEY = import.meta.env.VITE_REACT_APP_API_KEY;
 
     const handleSubmit = async (e) => {
         e.preventDefault();

@@ -1,6 +1,6 @@
 ## InsuranceDoc AI
 
-An AI-powered application designed to process insurance policy documents and answer user questions using a Retrieval-Augmented Generation (RAG) pipeline. This project consists of a FastAPI backend and a React frontend.
+An AI-powered application designed to process insurance policy documents and answer user questions using a Retrieval-Augmented Generation (RAG) pipeline. This project consists of a FastAPI backend and a React frontend. Built collaboratively with a teammate.
 
 -----
 
@@ -45,13 +45,13 @@ These instructions will get a copy of the project up and running on your local m
 
 ### Local Setup
 
-The project is structured with a `hackathon-project` folder for the backend and a `frontend` folder for the React app.
+The project is structured with a `backend` folder for the backend and a `frontend` folder for the React app.
 
 #### 1\. Backend Setup
 
-1.  Navigate to the `hackathon-project` directory.
+1.  Navigate to the `backend` directory.
     ```bash
-    cd hackathon-project
+    cd backend
     ```
 2.  Create a Python virtual environment and activate it.
     ```bash
@@ -65,9 +65,9 @@ The project is structured with a `hackathon-project` folder for the backend and 
     ```bash
     pip install -r requirements.txt
     ```
-4.  Create a **`.env`** file in the `hackathon-project` directory and add your API keys.
+4.  Create a **`.env`** file in the `backend` directory and add your API keys.
     ```
-    HACKATHON_API_KEY="your-secret-api-key"
+    API_KEY="your-secret-api-key"
     GOOGLE_API_KEY="your-google-api-key"
     PINECONE_API_KEY="your-pinecone-api-key"
     ```
@@ -89,8 +89,8 @@ The project is structured with a `hackathon-project` folder for the backend and 
     ```
 3.  Create a **`.env`** file in the `frontend` directory and add the following variables, pointing to your local backend.
     ```
-    VITE_REACT_APP_API_URL_ENDPOINT=http://127.0.0.1:8000/hackrx/run
-    VITE_REACT_APP_HACKATHON_API_KEY="your-secret-api-key"
+    VITE_REACT_APP_API_URL_ENDPOINT=http://127.0.0.1:8000/query/run
+    VITE_REACT_APP_API_KEY="your-secret-api-key"
     ```
 4.  Start the React development server.
     ```bash
@@ -104,7 +104,7 @@ The project is structured with a `hackathon-project` folder for the backend and 
 
 The primary backend endpoint for interaction is:
 
-  * **POST** `/hackrx/run`
+  * **POST** `/query/run`
       * **Description:** Processes a document from a URL and answers a list of questions.
       * **Request Body (JSON):**
         ```json
@@ -114,7 +114,7 @@ The primary backend endpoint for interaction is:
         }
         ```
       * **Headers:**
-          * `Authorization: Bearer YOUR_HACKATHON_API_KEY`
+          * `Authorization: Bearer YOUR_API_KEY`
       * **Response (JSON):**
         ```json
         {
@@ -128,5 +128,5 @@ The primary backend endpoint for interaction is:
 
 This project is configured for deployment on **Render.com**. Both the backend and frontend are hosted as separate services.
 
-  * **Backend:** Deployed as a **Web Service**, pointing to the `hackathon-project` root directory.
+  * **Backend:** Deployed as a **Web Service**, pointing to the `backend` root directory.
   * **Frontend:** Deployed as a **Static Site**, pointing to the `frontend` root directory with the build command `npm run build` and publish directory `dist`. Remember to configure the environment variables with your live backend URL.

@@ -18,7 +18,7 @@ from data_processor import (
 
 # --- Load environment variables ---
 load_dotenv()
-HACKATHON_API_KEY = os.environ.get("HACKATHON_API_KEY")
+API_KEY = os.environ.get("API_KEY")
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 PINECONE_API_KEY = os.environ.get("PINECONE_API_KEY")
 
@@ -76,7 +76,7 @@ def generate_answer_with_gemini(question: str, context: str) -> str:
         return "An error occurred while generating the answer with Gemini Pro."
 
 async def process_and_answer(document_url, questions: list[str]) -> list[str]:
-    index_name = "hackrx-policy-index"
+    index_name = "policy-index"
     
     doc_id_namespace = create_doc_id_from_url(document_url)
     print(f"Using Pinecone Namespace: {doc_id_namespace}")
@@ -140,13 +140,13 @@ async def process_and_answer(document_url, questions: list[str]) -> list[str]:
 
 # --- Endpoints ---
 
-@app.post("/hackrx/run", tags=["Main Endpoint"])
-async def hackrx_run(data: DocumentData, authorization: str = Header(None)):
+@app.post("/query/run", tags=["Main Endpoint"])
+async def query_run(data: DocumentData, authorization: str = Header(None)):
     if authorization is None or not authorization.startswith("Bearer "):
         raise HTTPException(status_code=401, detail="Authorization header missing or invalid.")
     
     token = authorization.split(" ")[1]
-    if token != HACKATHON_API_KEY:
+    if token != API_KEY:
         raise HTTPException(status_code=401, detail="Invalid API Key.")
     
     document_url = data.documents

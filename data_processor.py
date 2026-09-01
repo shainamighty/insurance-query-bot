@@ -163,8 +163,8 @@ def index_chunks_in_pinecone(chunks: list[str], embeddings: list, index_name: st
         print(f"Error indexing in Pinecone: {e}")
         
 if __name__ == "__main__":
-    sample_url = "https://hackrx.blob.core.windows.net/assets/hackrx_6/policies/BAJHLIP23020V012223.pdf?sv=2023-01-03&st=2025-07-30T06%3A46%3A49Z&se=2025-09-01T06%3A46%3A00Z&sr=c&sp=rl&sig=9szykRKdGYj0BVm1skP%2BX8N9%2FRENEn2k7MQPUp33jyQ%3D"
-    index_name = "hackrx-policy-index"
+    sample_url = "https://example.com/sample-insurance-policy.pdf"  # Replace with a public PDF URL to test
+    index_name = "policy-index"
 
     document_content = get_document_text(sample_url)
     
